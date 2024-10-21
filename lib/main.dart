@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:register/provider/users.dart';
+import 'package:register/routes/app_routes.dart';
+import 'package:register/views/user_form.dart';
 import 'package:register/views/user_list.dart';
 
 void main() {
@@ -21,13 +23,15 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'User Cards',
-        theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: const UserList(),
-      ),
+          title: 'User Cards',
+          theme: ThemeData(
+            primarySwatch: Colors.blueGrey,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          routes: {
+            AppRoutes.home: (_) => const UserList(),
+            AppRoutes.userForm: (_) => const UserForm(),
+          }),
     );
   }
 }
