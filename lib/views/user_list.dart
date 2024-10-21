@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:register/provider/users.dart';
+import 'package:register/routes/app_routes.dart';
 
 import '../widgets/user_tile.dart';
 
@@ -19,7 +20,7 @@ class UserList extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                users.removeUser('1');
+                Navigator.of(context).pushNamed(AppRoutes.userForm);
               },
               icon: const Icon(Icons.add),
             ),
@@ -28,7 +29,9 @@ class UserList extends StatelessWidget {
         body: ListView.builder(
           itemCount: users.count,
           itemBuilder: (BuildContext context, int index) {
-            return UserTile(user: users.byIndex(index));
+            return UserTile(
+              user: users.byIndex(index),
+            );
           },
         ));
   }
