@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:register/provider/users.dart';
+import 'package:register/routes/app_routes.dart';
 
 import '../models/user.dart';
 
@@ -32,19 +35,59 @@ class UserTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.edit,
-                    size: 18,
-                  
-                  )),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                    AppRoutes.userForm,
+                    arguments: user,
+                  );
+                },
+                icon: const Icon(
+                  Icons.edit,
+                  size: 18,
+                ),
+              ),
               IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.delete,
-                    size: 18,
-                    color: Colors.red,
-                  ))
+                icon: const Icon(
+                  Icons.delete,
+                  size: 18,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) {
+                      return AlertDialog(
+                        title: const Text('Excluir o usuário'),
+                        content: const Text('Você tem certeza???'),
+                        actions: [
+                          TextButton(
+                            child: const Text('Excluir'),
+                            onPressed: () {
+                              Provider.of<Users>(context, listen: false)
+                                  .removeUser(user.id!);
+                              Navigator.of(context).pop(true);
+                            },
+                          ),
+                          TextButton(
+                            child: const Text('Cancelar'),
+                            onPressed: () {
+                              Navigator.of(context).pop(false);
+                            },
+                          )
+                        ],
+                      );
+                    },
+                  ).then(
+                    (confirmed) {
+                      if (confirmed) {
+                        return ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Usuário Excluido com sucesso')));
+                      }
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),
