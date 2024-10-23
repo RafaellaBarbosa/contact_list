@@ -33,13 +33,13 @@ Este projeto é uma aplicação Flutter para gerenciar uma lista de contatos. El
 2. Clone este repositório:
 
    ```bash
-   git clone https://github.com/RafaellaBarbosa/register.git
+   git clone https://github.com/RafaellaBarbosa/contact_list.git
    ```
 
 3. Navegue até o diretório do projeto:
 
    ```bash
-   cd nome-do-repositorio
+   cd contact_list
    ```
 
 4. Execute o comando abaixo para instalar as dependências:
