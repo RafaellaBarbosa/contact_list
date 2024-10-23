@@ -39,7 +39,7 @@ class UserForm extends StatelessWidget {
                   id: _formData['id'],
                   name: _formData['name']!,
                   email: _formData['email']!,
-                  avatarUrl: _formData['urlAvatar'],
+                  avatarUrl: _formData['avatarUrl'],
                 ));
                 Navigator.of(context).pop();
               }

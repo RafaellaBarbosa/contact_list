@@ -35,16 +35,16 @@ class UserTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
+                icon: const Icon(
+                  Icons.edit,
+                  size: 18,
+                ),
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     AppRoutes.userForm,
                     arguments: user,
                   );
                 },
-                icon: const Icon(
-                  Icons.edit,
-                  size: 18,
-                ),
               ),
               IconButton(
                 icon: const Icon(
@@ -79,10 +79,12 @@ class UserTile extends StatelessWidget {
                     },
                   ).then(
                     (confirmed) {
-                      if (confirmed) {
+                      if (confirmed && context.mounted) {
                         return ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Usuário Excluido com sucesso')));
+                          const SnackBar(
+                            content: Text('Usuário Excluido com sucesso'),
+                          ),
+                        );
                       }
                     },
                   );

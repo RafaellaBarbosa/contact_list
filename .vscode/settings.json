@@ -1,5 +1,5 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "cmake.sourceDirectory": "C:/Users/rafae/Documents/projects/flutter/register/linux",
-    "cmake.cmakePath": "C:/Program Files//CMake/bin/cmake.exe"
+    "cmake.sourceDirectory": "C:/Users/rafae/Documents/projects/flutter/register/windows/flutter",
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe"
 }
